@@ -1,0 +1,84 @@
+{
+    "name": "ageekdev/myanmar-name-converter",
+    "description": "Convert Myanmar Name to English, and vice versa.",
+    "keywords": [
+        "AgeekDev",
+        "laravel",
+        "myanmar-name-converter",
+        "myanmar",
+        "english",
+        "names",
+        "name",
+        "name converter",
+        "names converter"
+    ],
+    "homepage": "https://github.com/ageekdev/myanmar-name-converter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AgeekDev",
+            "email": "tintnaingwin@geniefintech.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.14.0",
+        "illuminate/contracts": "^10.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.8",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^1.21|^2.0",
+        "pestphp/pest-plugin-laravel": "^1.1|^2.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AgeekDev\\MMName\\": "src/",
+            "AgeekDev\\MMName\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AgeekDev\\MMName\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint",
+        "analyse-clear": "vendor/bin/phpstan clear-result-cache",
+        "check": [
+            "@test",
+            "@analyse",
+            "@format"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AgeekDev\\MMName\\MMNameServiceProvider"
+            ],
+            "aliases": {
+                "MMName": "AgeekDev\\MMName\\Facades\\MMName"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
