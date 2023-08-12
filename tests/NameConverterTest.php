@@ -8,6 +8,12 @@ it('can convert myan-glish name to myanmar', function () {
 
     $result = MMName::name('Ohn Mar Tha Dar')->convertToMm();
     expect($result)->toEqual('ဥမ္မာ သဒ္ဒါ');
+
+    $result = MMName::name('Arkar')->convertToMm();
+    expect($result)->toEqual('အာကာ');
+
+    $result = MMName::name('thi da')->convertToMm();
+    expect($result)->toEqual('သီတာ');
 });
 
 it('can convert myanmar name to myan-glish', function () {

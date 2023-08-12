@@ -12,6 +12,7 @@ trait EnglishSarHelpers
         'thu ya' => 'thuya',
         'thu ra' => 'thura',
         'thi da' => 'thida',
+        'ar kar' => 'arkar',
     ];
 
     public function exceptionalNamesReplace(string $name): string
