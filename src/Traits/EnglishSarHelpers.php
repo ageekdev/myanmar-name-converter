@@ -9,6 +9,9 @@ trait EnglishSarHelpers
         'tha dar' => 'thadar',
         'eain dray' => 'eaindray',
         'aein dray' => 'aeindray',
+        'thu ya' => 'thuya',
+        'thu ra' => 'thura',
+        'thi da' => 'thida',
     ];
 
     public function exceptionalNamesReplace(string $name): string
