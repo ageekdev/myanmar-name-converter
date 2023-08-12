@@ -5,6 +5,9 @@ use AgeekDev\MMName\MMName;
 it('can convert myan-glish name to myanmar', function () {
     $result = MMName::name('Chaung htoon Nwal shoon shunn')->convertToMm();
     expect($result)->toEqual('ချောင် ထွန်း နွယ် ရွှန်း ရွှန်း');
+
+    $result = MMName::name('Ohn Mar Tha Dar')->convertToMm();
+    expect($result)->toEqual('ဥမ္မာ သဒ္ဒါ');
 });
 
 it('can convert myanmar name to myan-glish', function () {

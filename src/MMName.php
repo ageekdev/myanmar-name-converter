@@ -2,12 +2,13 @@
 
 namespace AgeekDev\MMName;
 
+use AgeekDev\MMName\Traits\EnglishSarHelpers;
 use AgeekDev\MMName\Traits\MyanmarSarHelpers;
 use Illuminate\Support\Facades\Config;
 
 class MMName
 {
-    use MyanmarSarHelpers;
+    use MyanmarSarHelpers, EnglishSarHelpers;
 
     protected array $dataSource;
 
@@ -36,8 +37,9 @@ class MMName
     public function convertToMm(): string
     {
         $mmName = '';
+        $enName = $this->exceptionalNamesReplace(strtolower($this->name));
 
-        foreach (explode(' ', strtolower($this->name)) as $name) {
+        foreach (explode(' ', $enName) as $name) {
             $mmName .= ($this->dataSource['en'][$name] ?? '').' ';
         }
 
