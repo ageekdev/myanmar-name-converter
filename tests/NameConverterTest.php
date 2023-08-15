@@ -4,16 +4,22 @@ use AgeekDev\MMName\MMName;
 
 it('can convert myan-glish name to myanmar', function () {
     $result = MMName::name('Chaung htoon Nwal shoon shunn')->convertToMm();
-    expect($result)->toEqual('ချောင် ထွန်း နွယ် ရွှန်း ရွှန်း');
+    expect($result)->toEqual('ချောင်ထွန်းနွယ်ရွှန်းရွှန်း');
 
     $result = MMName::name('Ohn Mar Tha Dar')->convertToMm();
-    expect($result)->toEqual('ဥမ္မာ သဒ္ဒါ');
+    expect($result)->toEqual('ဥမ္မာသဒ္ဒါ');
 
     $result = MMName::name('Arkar')->convertToMm();
     expect($result)->toEqual('အာကာ');
 
     $result = MMName::name('thi da')->convertToMm();
     expect($result)->toEqual('သီတာ');
+
+    $result = MMName::name('thiha kyaw')->convertToMm();
+    expect($result)->toEqual('သီဟကျော်');
+
+    $result = MMName::name('tun tun')->convertToMm();
+    expect($result)->toEqual('ထွန်းထွန်း');
 });
 
 it('can convert myanmar name to myan-glish', function () {

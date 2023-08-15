@@ -43,6 +43,6 @@ class MMName
             $mmName .= ($this->dataSource['en'][$name] ?? '').' ';
         }
 
-        return trim($mmName);
+        return str_replace(' ', '', trim($mmName));
     }
 }

@@ -2,22 +2,13 @@
 
 namespace AgeekDev\MMName\Traits;
 
+use Illuminate\Support\Facades\Config;
+
 trait EnglishSarHelpers
 {
-    private array $specialNames = [
-        'ohn mar' => 'ohnmar',
-        'tha dar' => 'thadar',
-        'eain dray' => 'eaindray',
-        'aein dray' => 'aeindray',
-        'thu ya' => 'thuya',
-        'thu ra' => 'thura',
-        'thi da' => 'thida',
-        'ar kar' => 'arkar',
-    ];
-
     public function exceptionalNamesReplace(string $name): string
     {
-        foreach ($this->specialNames as $key => $value) {
+        foreach (Config::get('en-exceptional-names') as $key => $value) {
             $name = str_replace($key, $value, $name);
         }
 

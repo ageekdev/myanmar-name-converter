@@ -11,6 +11,9 @@ class MMNameServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('myanmar-name-converter')
-            ->hasConfigFile('names-map');
+            ->hasConfigFile([
+                'names-map',
+                'en-exceptional-names',
+            ]);
     }
 }

@@ -27,7 +27,7 @@ From Myan-glish Name To Myanmar
 ```php
 $name = "Tun Tun";
 
-\AgeekDev\MMName\MMName::name($name)->convertToMm(); // ထွန်း ထွန်း
+\AgeekDev\MMName\MMName::name($name)->convertToMm(); // ထွန်းထွန်း
 ```
 
 ## Testing
