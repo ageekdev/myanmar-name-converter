@@ -12,20 +12,15 @@ class MMName
 
     protected array $dataSource;
 
-    final public function __construct(protected string $name)
+    public function __construct()
     {
         $this->dataSource = Config::get('names-map');
     }
 
-    public static function name(string $name): self
-    {
-        return new static($name);
-    }
-
-    public function convertToEn(): string
+    public function convertToEn(string $nameString): string
     {
         $enName = '';
-        $nameSegments = $this->myanmarSarSegment($this->name);
+        $nameSegments = $this->myanmarSarSegment($nameString);
 
         foreach (explode(' ', $nameSegments) as $name) {
             $enName .= ($this->dataSource['mm'][$name] ?? '').' ';
@@ -34,10 +29,10 @@ class MMName
         return trim($enName);
     }
 
-    public function convertToMm(): string
+    public function convertToMm(string $nameString): string
     {
         $mmName = '';
-        $enName = $this->exceptionalNamesReplace(strtolower($this->name));
+        $enName = $this->exceptionalNamesReplace(strtolower($nameString));
 
         foreach (explode(' ', $enName) as $name) {
             $mmName .= ($this->dataSource['en'][$name] ?? '').' ';
