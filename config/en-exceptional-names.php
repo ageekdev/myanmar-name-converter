@@ -20,4 +20,6 @@ return [
     'sun di' => 'sundi',
     'thu rain' => 'thurain',
     'thu rein' => 'thurein',
+    'oak kar' => 'oakkar',
+    'oak ka' => 'oakka',
 ];
