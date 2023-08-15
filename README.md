@@ -19,7 +19,7 @@ From Myanmar Name To Myan-glish
 ```php
 $name = "ကိုကျော်";
 
-\AgeekDev\MMName\MMName::name($name)->convertToEn(); // Ko Kyaw
+\AgeekDev\MMName\Facades\MMName::convertToEn($name); // Ko Kyaw
 ```
 
 From Myan-glish Name To Myanmar
@@ -27,7 +27,7 @@ From Myan-glish Name To Myanmar
 ```php
 $name = "Tun Tun";
 
-\AgeekDev\MMName\MMName::name($name)->convertToMm(); // ထွန်းထွန်း
+\AgeekDev\MMName\Facades\MMName::convertToMm($name); // ထွန်းထွန်း
 ```
 
 ## Testing
