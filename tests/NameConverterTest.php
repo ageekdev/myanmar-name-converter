@@ -20,6 +20,15 @@ it('can convert myan-glish name to myanmar', function () {
 
     $result = MMName::convertToMm('tun tun');
     expect($result)->toEqual('ထွန်းထွန်း');
+
+    $result = MMName::convertToMm('khun ye aung');
+    expect($result)->toEqual('ခွန်ရဲအောင်');
+
+    $result = MMName::convertToMm('salai ye aung');
+    expect($result)->toEqual('စလိုင်းရဲအောင်');
+
+    $result = MMName::convertToMm('waiyan aung');
+    expect($result)->toEqual('၀ေယံအောင်');
 });
 
 it('can convert myanmar name to myan-glish', function () {
@@ -62,6 +71,11 @@ it('can convert myanmar name to myan-glish', function () {
     $result = MMName::convertToEn('မုဒြာ');
     expect($result)->toEqual('mu dra');
 
+    $result = MMName::convertToEn('မောင်ခွန်ရဲအောင်');
+    expect($result)->toEqual('mg khun ye aung');
+
+    //    $result = MMName::convertToEn('မောင်အောင်ကျော်ခိုင်');
+    //    expect($result)->toEqual('mg khun ye aung');
     // need to fix
     // အိန္ဒြေ, သဒ္ဒါ
 });
