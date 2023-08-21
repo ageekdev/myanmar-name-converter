@@ -1,6 +1,8 @@
 # Myanmar Name Converter
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ageekdev/myanmar-name-converter.svg?style=flat-square)](https://packagist.org/packages/ageekdev/myanmar-name-converter)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ageekdev/myanmar-name-converter/run-tests.yml?label=tests&style=flat-square)](https://github.com/ageekdev/myanmar-name-converter/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/ageekdev/myanmar-name-converter.svg?style=flat-square)](https://packagist.org/packages/ageekdev/myanmar-name-converter)
 
 Convert Myanmar Name to English, and vice versa.
 
@@ -32,6 +34,8 @@ $name = "Tun Tun";
 
 ## Testing
 
+You can run the tests with:
+
 ```bash
 composer test
 ```
@@ -42,7 +46,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
