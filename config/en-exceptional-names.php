@@ -22,4 +22,16 @@ return [
     'thu rein' => 'thurein',
     'oak kar' => 'oakkar',
     'oak ka' => 'oakka',
+    'zar ni' => 'zarni',
+    'ni lar' => 'nilar',
+    'zay yar' => 'zayar',
+    'za yar' => 'zayar',
+    'zay ya' => 'zayya',
+    'tha zin' => 'thazin',
+    'nan dar' => 'nandar',
+    'nan da' => 'nanda',
+    'wai yan' => 'waiyan',
+    'thein gi' => 'theingi',
+    'thu zar' => 'thuzar',
+
 ];

@@ -14,7 +14,10 @@ class MMName
 
     public function __construct()
     {
-        $this->dataSource = Config::get('names-map');
+        $this->dataSource = [
+            'en' => Config::get('en-names-map'),
+            'mm' => Config::get('mm-names-map'),
+        ];
     }
 
     public function convertToEn(string $nameString): string
