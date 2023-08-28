@@ -8,6 +8,7 @@ return [
     'thu ya' => 'thuya',
     'thu ra' => 'thura',
     'thi da' => 'thida',
+    'thi dar' => 'thidar',
     'ar kar' => 'arkar',
     'thi ri' => 'thiri',
     'thin zar' => 'thinzar',

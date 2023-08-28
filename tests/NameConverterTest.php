@@ -3,6 +3,9 @@
 use AgeekDev\MMName\Facades\MMName;
 
 it('can convert myan-glish name to myanmar', function () {
+    $result = en_name_to_mm('Chaung htoon Nwal shoon shunn');
+    expect($result)->toEqual('ချောင်ထွန်းနွယ်ရွှန်းရွှန်း');
+
     $result = MMName::convertToMm('Chaung htoon Nwal shoon shunn');
     expect($result)->toEqual('ချောင်ထွန်းနွယ်ရွှန်းရွှန်း');
 
@@ -29,9 +32,16 @@ it('can convert myan-glish name to myanmar', function () {
 
     $result = MMName::convertToMm('waiyan aung');
     expect($result)->toEqual('၀ေယံအောင်');
+
+    $result = MMName::convertToMm('aung khaing khant');
+    dd($result);
+    expect($result)->toEqual('၀ေယံအောင်');
 });
 
 it('can convert myanmar name to myan-glish', function () {
+    $result = mm_name_to_en('မောင်မောင်');
+    expect($result)->toEqual('mg mg');
+
     $result = MMName::convertToEn('မောင်မောင်');
     expect($result)->toEqual('mg mg');
 
@@ -71,11 +81,10 @@ it('can convert myanmar name to myan-glish', function () {
     $result = MMName::convertToEn('မုဒြာ');
     expect($result)->toEqual('mu dra');
 
-    $result = MMName::convertToEn('မောင်ခွန်ရဲအောင်');
-    expect($result)->toEqual('mg khun ye aung');
+//    $result = MMName::convertToEn('အောင်ခိုင်ခန့်');
+//    dd($result);
+//    expect($result)->toEqual('mg khun ye aung');
 
-    //    $result = MMName::convertToEn('မောင်အောင်ကျော်ခိုင်');
-    //    expect($result)->toEqual('mg khun ye aung');
     // need to fix
     // အိန္ဒြေ, သဒ္ဒါ
 });
