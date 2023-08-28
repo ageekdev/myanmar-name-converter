@@ -107,6 +107,9 @@ it('can convert myanmar name to myan-glish', function () {
     $result = MMName::convertToEn('အောင်ခိုင်ခန့်');  //  ခန့် ခ န ် ့
     expect($result)->toEqual('aung khine khant');
 
+    $result = MMName::convertToEn('မောင်ခွန်ရဲအောင်');
+    expect($result)->toEqual('mg khun ye aung');
+
     $result = MMName::convertToEn('အောင်ခိုင်ခန့်');  // ခန့် ခ န ့ ်
     expect($result)->toEqual('aung khine khant');
 
