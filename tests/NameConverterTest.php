@@ -81,9 +81,9 @@ it('can convert myanmar name to myan-glish', function () {
     $result = MMName::convertToEn('မုဒြာ');
     expect($result)->toEqual('mu dra');
 
-//    $result = MMName::convertToEn('အောင်ခိုင်ခန့်');
-//    dd($result);
-//    expect($result)->toEqual('mg khun ye aung');
+    //    $result = MMName::convertToEn('အောင်ခိုင်ခန့်');
+    //    dd($result);
+    //    expect($result)->toEqual('mg khun ye aung');
 
     // need to fix
     // အိန္ဒြေ, သဒ္ဒါ
