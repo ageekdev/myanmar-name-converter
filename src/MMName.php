@@ -65,8 +65,8 @@ class MMName
 
     public function compare(string $firstName, string $secondName): bool
     {
-        $firstName = $this->isMmName($firstName) ? $firstName : $this->convertToMm($firstName);
-        $secondName = $this->isMmName($secondName) ? $secondName : $this->convertToMm($secondName);
+        $firstName = $this->isMmName($firstName) ? $this->convertToMm($this->convertToEn($firstName)) : $this->convertToMm($firstName);
+        $secondName = $this->isMmName($secondName) ? $this->convertToMm($this->convertToEn($secondName)) : $this->convertToMm($secondName);
 
         if (trim_whitespaces($firstName) === trim_whitespaces($secondName)) {
             return true;

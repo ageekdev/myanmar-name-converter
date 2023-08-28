@@ -29,4 +29,10 @@ it('can compare names', function () {
 
     $result = MMName::compare('thiha kyaw', 'သီ ဟ ကျော်');
     expect($result)->toBeTrue();
+
+    $result = MMName::compare('အောင်ခိုင်ခန့်', 'aung khaing khant');
+    expect($result)->toBeTrue();
+
+    $result = MMName::compare('အောင်ခိုင်ခန့်', 'aung khine khant');
+    expect($result)->toBeTrue();
 });
