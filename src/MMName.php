@@ -53,25 +53,6 @@ class MMName
         return str_replace(' ', '', trim($mmName));
     }
 
-    public function compareMm(string $firstName, string $secondName): bool
-    {
-        if ($firstName === $secondName) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function compareEn(string $firstName, string $secondName): bool
-    {
-        // Need to convert to mm first since mm words are unique.
-        if ($this->convertToMm($firstName) === $this->convertToMm($secondName)) {
-            return true;
-        }
-
-        return false;
-    }
-
     public function isMmName(string $name): bool
     {
         return preg_match('/^[\x{1000}-\x{103F}\x{104A}-\x{109F}|\x{0020}]+$/u', $name);
@@ -80,5 +61,17 @@ class MMName
     public function isEnName(string $name): bool
     {
         return preg_match('/^[A-Za-z|\x{0020}]+$/', $name);
+    }
+
+    public function compare(string $firstName, string $secondName): bool
+    {
+        $firstName = $this->isMmName($firstName) ? $firstName : $this->convertToMm($firstName);
+        $secondName = $this->isMmName($secondName) ? $secondName : $this->convertToMm($secondName);
+
+        if (trim_whitespaces($firstName) === trim_whitespaces($secondName)) {
+            return true;
+        }
+
+        return false;
     }
 }

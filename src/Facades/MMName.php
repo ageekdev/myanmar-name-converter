@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static string convertToEn(string $nameString): string
  * @method static string isMmName(string $nameString): bool
  * @method static string isEnName(string $nameString): bool
- * @method static string compareMm(string $firstName, string $secondName): bool
- * @method static string compareEn(string $firstName, string $secondName): bool
+ * @method static string compare(string $firstName, string $secondName): bool
  *
  * @see \AgeekDev\MMName\MMName
  */

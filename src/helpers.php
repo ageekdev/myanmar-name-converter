@@ -16,17 +16,10 @@ if (! function_exists('mm_name_to_en')) {
     }
 }
 
-if (! function_exists('compare_en_names')) {
-    function compare_en_names(string $firstName, string $secondName): bool
+if (! function_exists('compare_names')) {
+    function compare_names(string $firstName, string $secondName): bool
     {
-        return app(MMName::class)->compareEn($firstName, $secondName);
-    }
-}
-
-if (! function_exists('compare_mm_names')) {
-    function compare_mm_names(string $firstName, string $secondName): bool
-    {
-        return app(MMName::class)->compareMm($firstName, $secondName);
+        return app(MMName::class)->compare($firstName, $secondName);
     }
 }
 
@@ -41,5 +34,12 @@ if (! function_exists('is_en_name')) {
     function is_en_name(string $name): bool
     {
         return app(MMName::class)->isEnName($name);
+    }
+}
+
+if (! function_exists('trim_whitespaces')) {
+    function trim_whitespaces(string $value): string
+    {
+        return str_replace(' ', '', preg_replace('/\s\s+/', ' ', $value));
     }
 }

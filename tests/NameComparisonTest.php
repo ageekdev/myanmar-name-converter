@@ -2,24 +2,31 @@
 
 use AgeekDev\MMName\Facades\MMName;
 
-it('can compare myan-glish names', function () {
-    $result = compare_en_names('Aung Kyaw Khine', 'Aung Kyaw Khaing');
+it('can compare names', function () {
+    $result = compare_names('Aung Kyaw Khine', 'Aung Kyaw Khaing');
     expect($result)->toBeTrue();
 
-    $result = MMName::compareEn('Aung Kyaw Khine', 'Aung Kyaw Khaing');
+    $result = MMName::compare('Aung Kyaw Khine', 'Aung Kyaw Khaing');
     expect($result)->toBeTrue();
 
-    $result = MMName::compareEn('Thida', 'thi dar');
-    expect($result)->toBeTrue();
-});
-
-it('can compare myanmar names', function () {
-    $result = compare_mm_names('သီဟကျော်', 'သီဟကျော်');
+    $result = MMName::compare('Htun Htun', 'Tun Htoon');
     expect($result)->toBeTrue();
 
-    $result = MMName::compareMm('သီဟကျော်', 'သီဟကျော်');
+    $result = MMName::compare('Thida', 'thi dar');
     expect($result)->toBeTrue();
 
-    $result = MMName::compareMm('thiha', 'thiha');
+    $result = MMName::compare('khaing', 'khine');
+    expect($result)->toBeTrue();
+
+    $result = MMName::compare('သီဟကျော်', 'သီ ဟ ကျော်');
+    expect($result)->toBeTrue();
+
+    $result = MMName::compare('သီဟကျော်', 'သီဟကျော်');
+    expect($result)->toBeTrue();
+
+    $result = MMName::compare('သီဟကျော်', 'thi ha kyaw');
+    expect($result)->toBeTrue();
+
+    $result = MMName::compare('thiha kyaw', 'သီ ဟ ကျော်');
     expect($result)->toBeTrue();
 });
