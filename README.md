@@ -16,20 +16,61 @@ composer require ageekdev/myanmar-name-converter
 
 ## Usage
 
-From Myanmar Name To Myan-glish
-
+Convert Names
 ```php
+use \AgeekDev\MMName\Facades\MMName;
+
+// From Myanmar Name To Myan-glish
+
 $name = "ကိုကျော်";
 
-\AgeekDev\MMName\Facades\MMName::convertToEn($name); // Ko Kyaw
-```
+MMName::convertToEn($name); // Ko Kyaw
 
-From Myan-glish Name To Myanmar
+// From Myan-glish Name To Myanmar
 
-```php
 $name = "Tun Tun";
 
-\AgeekDev\MMName\Facades\MMName::convertToMm($name); // ထွန်းထွန်း
+MMName::convertToMm($name); // ထွန်းထွန်း
+
+// With Helper Function
+
+$name = "ကိုကျော်";
+
+mm_name_to_en($name); // Ko Kyaw
+
+$name = "Tun Tun";
+
+en_name_to_mm($name); // ထွန်းထွန်း
+```
+
+Compare Names
+```php
+use \AgeekDev\MMName\Facades\MMName;
+
+MMName::compare('khaing', 'khine'); // true
+
+MMName::compare('သီဟကျော်', 'thi ha kyaw'); // true
+
+// With Helper Function
+compare_names('khaing', 'khine'); // true
+```
+
+Checking Names
+```php
+use \AgeekDev\MMName\Facades\MMName;
+
+MMName::isEnName('Thiha'); // true
+
+MMName::isEnName('သီဟ'); // false
+
+MMName::isMmName('သီဟ'); // true
+
+MMName::isMmName('Thiha'); // false
+
+// With Helper Function
+is_en_name('Thiha'); // true
+
+is_mm_name('သီဟ'); // true
 ```
 
 ## Testing
