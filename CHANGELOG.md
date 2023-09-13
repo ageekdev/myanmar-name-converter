@@ -2,6 +2,11 @@
 
 All notable changes to `myanmar-name-converter` will be documented in this file.
 
+## v1.0.3 - 2023-09-13
+
+- Added Normalization for Myanmar text
+- Added More Tests
+
 ## v1.0.2 - 2023-08-29
 
 Feat: added name compare, Fix: update dataset
