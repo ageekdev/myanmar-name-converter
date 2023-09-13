@@ -10,7 +10,7 @@ use Illuminate\Support\Traits\Macroable;
 
 class MMName extends Normalizer
 {
-    use MyanmarSarHelpers, EnglishSarHelpers, Macroable;
+    use EnglishSarHelpers, Macroable, MyanmarSarHelpers;
 
     protected array $dataSource;
 
