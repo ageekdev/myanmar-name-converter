@@ -4,12 +4,13 @@ namespace AgeekDev\MMName;
 
 use AgeekDev\MMName\Traits\EnglishSarHelpers;
 use AgeekDev\MMName\Traits\MyanmarSarHelpers;
+use AgeekDev\MMName\Utilities\Normalizer;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Traits\Macroable;
 
-class MMName
+class MMName extends Normalizer
 {
-    use MyanmarSarHelpers, EnglishSarHelpers, Macroable;
+    use EnglishSarHelpers, Macroable, MyanmarSarHelpers;
 
     protected array $dataSource;
 
@@ -24,11 +25,11 @@ class MMName
     public function convertToEn(string $nameString): string
     {
         if (! $this->isMmName($nameString)) {
-            return $nameString;
+            return $this->normalizeMmText($nameString);
         }
 
         $enName = '';
-        $nameSegments = $this->myanmarSarSegment($nameString);
+        $nameSegments = $this->myanmarSarSegment($this->normalizeMmText($nameString));
 
         foreach (explode(' ', $nameSegments) as $name) {
             $enName .= ($this->dataSource['mm'][$name] ?? '').' ';
