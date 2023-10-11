@@ -22,7 +22,7 @@ class MMName extends Normalizer
         ];
     }
 
-    public function convertToEn(string $nameString): string
+    public function convertToEn(string $nameString, bool $withPrefix = false): string
     {
         if (! $this->isMmName($nameString)) {
             return $this->normalizeMmText($nameString);
@@ -33,6 +33,10 @@ class MMName extends Normalizer
 
         foreach (explode(' ', $nameSegments) as $name) {
             $enName .= ($this->dataSource['mm'][$name] ?? '').' ';
+        }
+
+        if ($withPrefix) {
+            return $this->replacePrefix(trim($enName));
         }
 
         return trim($enName);
