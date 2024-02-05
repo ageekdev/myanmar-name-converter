@@ -26,6 +26,8 @@ $name = "ကိုကျော်";
 
 MMName::convertToEn($name); // Ko Kyaw
 
+MMName::convertToEn($name, isUcWords: false); // ko kyaw
+
 // From Myan-glish Name To Myanmar
 
 $name = "Tun Tun";

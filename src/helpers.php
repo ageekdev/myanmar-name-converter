@@ -43,3 +43,16 @@ if (! function_exists('trim_whitespaces')) {
         return str_replace(' ', '', preg_replace('/\s\s+/', ' ', $value));
     }
 }
+
+if (! function_exists('clean_text')) {
+    function clean_text(string $value): string
+    {
+        $value = preg_replace('/[\x{200B}-\x{200D}]/u', '', $value);
+
+        $value = preg_replace('/\s\s+/', ' ', $value);
+
+        $value = str_replace(' ', '', $value);
+
+        return trim($value);
+    }
+}

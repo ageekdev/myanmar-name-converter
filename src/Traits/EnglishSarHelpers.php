@@ -18,6 +18,9 @@ trait EnglishSarHelpers
         return $name;
     }
 
+    /**
+     * @deprecated
+     */
     public function replacePrefix(string $name): string
     {
         if (Str::of($name)->startsWith(['oo', 'maung'])) {
