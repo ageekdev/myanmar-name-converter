@@ -10,6 +10,7 @@ return [
     'thi da' => 'thida',
     'thi dar' => 'thidar',
     'ar kar' => 'arkar',
+    'r kar' => 'arkar',
     'thi ri' => 'thiri',
     'thin zar' => 'thinzar',
     'thit sar' => 'thitsar',
@@ -34,5 +35,5 @@ return [
     'wai yan' => 'waiyan',
     'thein gi' => 'theingi',
     'thu zar' => 'thuzar',
-
+    'a pril' => 'april',
 ];

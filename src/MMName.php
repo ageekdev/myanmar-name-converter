@@ -22,20 +22,24 @@ class MMName extends Normalizer
         ];
     }
 
-    public function convertToEn(string $nameString): string
+    public function convertToEn(string $nameString, bool $isUcWords = true): string
     {
-        if (! $this->isMmName($nameString)) {
+        if (! $this->isMmName(clean_text($nameString))) {
             return $this->normalizeMmText($nameString);
         }
 
         $enName = '';
-        $nameSegments = $this->myanmarSarSegment($this->normalizeMmText($nameString));
+        $nameSegments = $this->myanmarSarSegment($this->normalizeMmText(clean_text($nameString)));
 
         foreach (explode(' ', $nameSegments) as $name) {
             $enName .= ($this->dataSource['mm'][$name] ?? '').' ';
         }
 
-        return trim($enName);
+        if (! $isUcWords) {
+            return trim($this->exceptionalNamesReplace(strtolower($enName)));
+        }
+
+        return ucwords(trim($this->exceptionalNamesReplace(strtolower($enName))));
     }
 
     public function convertToMm(string $nameString): string
@@ -51,7 +55,7 @@ class MMName extends Normalizer
             $mmName .= ($this->dataSource['en'][$name] ?? '').' ';
         }
 
-        return str_replace(' ', '', trim($mmName));
+        return clean_text($mmName);
     }
 
     public function isMmName(string $name): bool

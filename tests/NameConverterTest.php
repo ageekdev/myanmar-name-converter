@@ -6,6 +6,9 @@ it('can convert myan-glish name to myanmar', function () {
     $result = en_name_to_mm('Chaung htoon Nwal shoon shunn');
     expect($result)->toEqual('ချောင်ထွန်းနွယ်ရွှန်းရွှန်း');
 
+    $result = MMName::convertToMm('Dun Zaw Daing');
+    expect($result)->toEqual('ဒွန်ဇော်ဒိုင်း');
+
     $result = MMName::convertToMm('Chaung htoon Nwal shoon shunn');
     expect($result)->toEqual('ချောင်ထွန်းနွယ်ရွှန်းရွှန်း');
 
@@ -59,84 +62,115 @@ it('can convert myan-glish name to myanmar', function () {
 
     $result = MMName::convertToMm('Dway');
     expect($result)->toEqual('ဒွေး');
+
+    $result = MMName::convertToMm('Arkar Myint Aung');
+    expect($result)->toEqual('အာကာမြင့်အောင်');
 });
 
 it('can convert myanmar name to myan-glish', function () {
+
+    $result = MMName::convertToEn('အာကာမြင့်အောင်');
+    expect($result)->toEqual('Arkar Myint Aung');
+
+    $result = MMName::convertToEn('ဒေါ်ဧပြီ');
+    expect($result)->toEqual('Daw April');
+
+    $result = MMName::convertToEn('ဒေါ်ဧပြီ', false);
+    expect($result)->toEqual('daw april');
+
+    $result = MMName::convertToEn('ယဥ်မာအေး');
+    expect($result)->toEqual('Yin Mar Aye');
+
+    $result = MMName::convertToEn('ဦးကိုကို');
+    expect($result)->toEqual('U Ko Ko');
+
+    $result = MMName::convertToEn('ဦးကိုကို');
+    expect($result)->toEqual('U Ko Ko');
+
+    $result = MMName::convertToEn('ဦးအောင်‌ဝေ'); // zero width space
+    expect($result)->toEqual('U Aung Wai');
+
     $result = MMName::convertToEn('မောင်မောင်');
-    expect($result)->toEqual('mg mg');
+    expect($result)->toEqual('Maung Maung');
+
+    $result = MMName::convertToEn('မောင်မောင်');
+    expect($result)->toEqual('Maung Maung');
 
     $result = MMName::convertToEn('လွမ်းထူး');
-    expect($result)->toEqual('lwan htue');
+    expect($result)->toEqual('Lwan Htue');
 
     $result = MMName::convertToEn('ကြိုးကြာ');
-    expect($result)->toEqual('kyoe kyar');
+    expect($result)->toEqual('Kyoe Kyar');
 
     $result = MMName::convertToEn('မြင့်မြင့်ခင်');
-    expect($result)->toEqual('myint myint khin');
+    expect($result)->toEqual('Myint Myint Khin');
 
     $result = MMName::convertToEn('မမကြီး');
-    expect($result)->toEqual('ma ma gyi');
+    expect($result)->toEqual('Ma Ma Gyi');
 
     $result = MMName::convertToEn('ရီရီ');
-    expect($result)->toEqual('yie yie');
+    expect($result)->toEqual('Yie Yie');
 
     $result = MMName::convertToEn('မာလာ');
-    expect($result)->toEqual('mar lar');
+    expect($result)->toEqual('Mar Lar');
 
     $result = MMName::convertToEn('ချစ်ချစ်');
-    expect($result)->toEqual('chit chit');
+    expect($result)->toEqual('Chit Chit');
 
     $result = MMName::convertToEn('ကျော်ထွဋ်');
-    expect($result)->toEqual('kyaw htut');
+    expect($result)->toEqual('Kyaw Htut');
 
     $result = MMName::convertToEn('ထွဋ်ကျော်');
-    expect($result)->toEqual('htut kyaw');
+    expect($result)->toEqual('Htut Kyaw');
 
     $result = MMName::convertToEn('ရွှေဇင်ရွှေစင်ရွှန်း');
-    expect($result)->toEqual('shwe zin shwe sin shunn');
+    expect($result)->toEqual('Shwe Zin Shwe Sin Shunn');
 
     $result = MMName::convertToEn('ကုဋေကုဋာ');
-    expect($result)->toEqual('ka day ka dar');
+    expect($result)->toEqual('Ka Day Ka Dar');
 
     $result = MMName::convertToEn('မုဒြာ');
-    expect($result)->toEqual('mu dra');
+    expect($result)->toEqual('Mu Dra');
 
     $result = MMName::convertToEn('အောင်ခိုင်ခန့်');  //  ခန့် ခ န ် ့
-    expect($result)->toEqual('aung khine khant');
-
-    $result = MMName::convertToEn('မောင်ခွန်ရဲအောင်');
-    expect($result)->toEqual('mg khun ye aung');
+    expect($result)->toEqual('Aung Khine Khant');
 
     $result = MMName::convertToEn('အောင်ခိုင်ခန့်');  // ခန့် ခ န ့ ်
-    expect($result)->toEqual('aung khine khant');
+    expect($result)->toEqual('Aung Khine Khant');
+
+    $result = MMName::convertToEn('မောင်ခွန်ရဲအောင်');
+    expect($result)->toEqual('Maung Khun Ye Aung');
+
+    $result = MMName::convertToEn('မောင်ခွန်ရဲအောင်');
+    expect($result)->toEqual('Maung Khun Ye Aung');
 
     $result = MMName::convertToEn('မြတ်ထွဋ်သူ');
-    expect($result)->toEqual('myat htut thu');
+    expect($result)->toEqual('Myat Htut Thu');
 
     $result = MMName::convertToEn('အိတိုးလျှံ');
-    expect($result)->toEqual('ei toe shan');
+    expect($result)->toEqual('Ei Toe Shan');
 
     $result = MMName::convertToEn('ဒွေး');
-    expect($result)->toEqual('dwe');
+    expect($result)->toEqual('Dwe');
 
     $result = MMName::convertToEn('ဝဏ္ဏကောင်း');
-    expect($result)->toEqual('wunna kaung');
+    expect($result)->toEqual('Wunna Kaung');
 
     $result = MMName::convertToEn('အိန္ဒြေကောင်း');
-    expect($result)->toEqual('eaindray kaung');
+    expect($result)->toEqual('Eaindray Kaung');
 
     $result = MMName::convertToEn('သဒ္ဒါနိုင်');
-    expect($result)->toEqual('thadar naing');
+    expect($result)->toEqual('Thadar Naing');
 
     $result = MMName::convertToEn('စန္ဒ');
-    expect($result)->toEqual('sanda');
+    expect($result)->toEqual('Sanda');
 
     $result = MMName::convertToEn('စန္ဒာ');
-    expect($result)->toEqual('sandar');
+    expect($result)->toEqual('Sandar');
 
     $result = MMName::convertToEn('မောင်သန့်သူ');
-    expect($result)->toEqual('mg thant thu');
+    expect($result)->toEqual('Maung Thant Thu');
 
     $result = MMName::convertToEn('မောင်မောင်ကျော်');
-    expect($result)->toEqual('mg mg kyaw');
+    expect($result)->toEqual('Maung Maung Kyaw');
 });
