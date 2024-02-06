@@ -38,4 +38,7 @@ it('can compare names', function () {
 
     $result = MMName::compare('အာကာမြင့်အောင်', 'အာကာမြင့်အောင်');
     expect($result)->toBeTrue();
+
+    $result = MMName::compare('Yair', 'Ye');
+    expect($result)->toBeTrue();
 });
