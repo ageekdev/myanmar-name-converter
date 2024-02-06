@@ -62,9 +62,16 @@ it('can convert myan-glish name to myanmar', function () {
 
     $result = MMName::convertToMm('Dway');
     expect($result)->toEqual('ဒွေး');
+
+    $result = MMName::convertToMm('Arkar Myint Aung');
+    expect($result)->toEqual('အာကာမြင့်အောင်');
 });
 
 it('can convert myanmar name to myan-glish', function () {
+
+    $result = MMName::convertToEn('အာကာမြင့်အောင်');
+    expect($result)->toEqual('Arkar Myint Aung');
+
     $result = MMName::convertToEn('ဒေါ်ဧပြီ');
     expect($result)->toEqual('Daw April');
 
