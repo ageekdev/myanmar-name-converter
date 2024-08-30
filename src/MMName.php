@@ -10,8 +10,8 @@ use Illuminate\Support\Traits\Macroable;
 class MMName
 {
     use EnglishSarHelpers,
-        MyanmarSarHelpers,
-        Macroable;
+        Macroable,
+        MyanmarSarHelpers;
 
     protected array $dataSource;
 
