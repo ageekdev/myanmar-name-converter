@@ -13,11 +13,11 @@ class DataSourceManager extends Manager
 
     public function createJsonDriver(): DataSourceDriverInterface
     {
-        return new JsonDriver();
+        return new JsonDriver;
     }
 
     public function createConfigDriver(): DataSourceDriverInterface
     {
-        return new ConfigDriver();
+        return new ConfigDriver;
     }
 }
