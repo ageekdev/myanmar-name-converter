@@ -9,7 +9,9 @@ class DataSourceDTO
         return new self($enFilepath, $mmFilepath);
     }
 
-    public function __construct(private readonly string $enFilepath, private readonly string $mmFilepath) {}
+    public function __construct(private readonly string $enFilepath, private readonly string $mmFilepath)
+    {
+    }
 
     public function getPath(string $source = 'en'): string
     {
