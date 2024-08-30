@@ -9,7 +9,7 @@ trait EnglishSarHelpers
 {
     private array $prefixNames = ['oo' => 'u', 'maung' => 'mg'];
 
-    public function exceptionalNamesReplace(string $name): string
+    public function replaceEnExceptionalWords(string $name): string
     {
         foreach (Config::get('en-exceptional-names') as $key => $value) {
             $name = str_replace($key, $value, $name);
@@ -30,5 +30,10 @@ trait EnglishSarHelpers
         }
 
         return $name;
+    }
+
+    public function isEnName(string $name): bool
+    {
+        return preg_match('/^[A-Za-z|\x{0020}]+$/', $name);
     }
 }
