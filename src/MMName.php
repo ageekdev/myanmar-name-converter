@@ -13,9 +13,7 @@ class MMName
         Macroable,
         MyanmarSarHelpers;
 
-    public function __construct(protected DataSourceDriverInterface $dataSource)
-    {
-    }
+    public function __construct(protected DataSourceDriverInterface $dataSource) {}
 
     public function compare(string $firstName, string $secondName): bool
     {
