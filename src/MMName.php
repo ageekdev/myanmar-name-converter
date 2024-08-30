@@ -28,11 +28,11 @@ class MMName
         return $normalize($firstName) === $normalize($secondName);
     }
 
-    protected function transform(string $nameSegment, string $source = 'en'): string
+    protected function transform(string $nameSegments, string $source = 'en'): string
     {
         check_source_name($source);
 
-        return collect(explode(' ', $nameSegment))
+        return collect(explode(' ', $nameSegments))
             ->map(function ($name) use ($source) {
                 return $this->dataSource
                     ->from($source)

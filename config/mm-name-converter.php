@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'data_source_driver' => env('MM_NAME_CONVERTER_DATA_SOURCE', 'config'), // 'config' or 'json'
+    'data_source_driver' => env('MM_NAME_CONVERTER_DATA_SOURCE', 'json'), // 'config' or 'json'
 
     'data_source' => [
         'json' => [
