@@ -22,6 +22,7 @@ trait MyanmarSarHelpers
                     // If character matches the pattern, concatenate with the next character if it exists
                     return isset($characters[$key + 1]) ? $character.$characters[$key + 1] : $character;
                 }
+
                 // If not, just return the character
                 return $character;
             })
