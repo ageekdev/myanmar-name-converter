@@ -6,7 +6,11 @@ use Illuminate\Support\Collection;
 
 interface DataSourceDriverInterface
 {
-    public function getDataSource(): self;
+    public function make(): self;
 
-    public function fetchData(string $source = 'en'): Collection;
+    public function from(string $source = 'en'): self;
+
+    public function toCollection(): Collection;
+
+    public function toArray(): array;
 }

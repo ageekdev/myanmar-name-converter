@@ -6,7 +6,7 @@ use AgeekDev\MMName\DataSourceDriver\DataSourceDriverInterface;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static DataSourceDriverInterface getDataSource(): DataSourceDriverInterface
+ * @method static DataSourceDriverInterface make(): DataSourceDriverInterface
  * @method static DataSourceDriverInterface driver($driver = null): DataSourceDriverInterface
  */
 class DataSource extends Facade

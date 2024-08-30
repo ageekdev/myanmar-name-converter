@@ -36,4 +36,27 @@ trait EnglishSarHelpers
     {
         return preg_match('/^[A-Za-z|\x{0020}]+$/', $name);
     }
+
+    public function convertToEn(string $nameString, bool $isUcWords = true): string
+    {
+        $nameString = clean_text($nameString);
+
+        if (! $this->isMmName($nameString)) {
+            return $this->normalizeMmText($nameString);
+        }
+
+        $nameSegments = $this->splitMyanmarSarSegments(
+            $this->normalizeMmText($nameString)
+        );
+
+        $enName = $this->transform($nameSegments, 'mm');
+
+        $result = trim(
+            $this->replaceEnExceptionalWords(
+                strtolower($enName)
+            )
+        );
+
+        return $isUcWords ? ucwords($result) : $result;
+    }
 }

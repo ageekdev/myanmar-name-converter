@@ -3,13 +3,10 @@
 namespace AgeekDev\MMName\DataSourceDriver;
 
 use AgeekDev\MMName\DTO\DataSourceDTO;
-use Illuminate\Support\Collection;
 
-class ConfigDriver implements DataSourceDriverInterface
+class ConfigDriver extends DataSourceDriver
 {
-    private DataSourceDTO $dataSource;
-
-    public function getDataSource(): self
+    public function make(): self
     {
         $this->dataSource = DataSourceDTO::make(
             config('mm-name-converter.data_source.config.en_filepath'),
@@ -19,10 +16,12 @@ class ConfigDriver implements DataSourceDriverInterface
         return $this;
     }
 
-    public function fetchData(string $source = 'en'): Collection
+    public function from(string $source = 'en'): self
     {
-        return collect(
-            config($this->dataSource->getPath($source))
+        $this->data = config(
+            $this->dataSource->getPath($source)
         );
+
+        return $this;
     }
 }

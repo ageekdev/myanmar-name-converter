@@ -3,14 +3,11 @@
 namespace AgeekDev\MMName\DataSourceDriver;
 
 use AgeekDev\MMName\DTO\DataSourceDTO;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 
-class JsonDriver implements DataSourceDriverInterface
+class JsonDriver extends DataSourceDriver
 {
-    private DataSourceDTO $dataSource;
-
-    public function getDataSource(): self
+    public function make(): self
     {
         $this->dataSource = DataSourceDTO::make(
             config('mm-name-converter.data_source.json.en_filepath'),
@@ -20,10 +17,14 @@ class JsonDriver implements DataSourceDriverInterface
         return $this;
     }
 
-    public function fetchData(string $source = 'en'): Collection
+    public function from(string $source = 'en'): self
     {
-        return collect(
-            json_decode(File::get($this->dataSource->getPath($source)))
+        $this->data = json_decode(
+            File::get(
+                $this->dataSource->getPath($source)
+            )
         );
+
+        return $this;
     }
 }

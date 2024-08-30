@@ -2,7 +2,9 @@
 
 namespace AgeekDev\MMName;
 
+use AgeekDev\MMName\DataSourceDriver\DataSourceDriverInterface;
 use AgeekDev\MMName\DataSourceDriver\DataSourceManager;
+use AgeekDev\MMName\Facades\DataSource;
 use Illuminate\Container\Container;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -13,6 +15,12 @@ class MMNameServiceProvider extends PackageServiceProvider
     {
         $this->app->singleton('name_data_source', function () {
             return new DataSourceManager(Container::getInstance());
+        });
+
+        $this->app->bind(DataSourceDriverInterface::class, function () {
+            return DataSource::driver(
+                config('mm-name-converter.data_source_driver')
+            )->make();
         });
     }
 
