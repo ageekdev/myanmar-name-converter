@@ -4,11 +4,11 @@ namespace AgeekDev\MMName;
 
 use AgeekDev\MMName\DataSourceDriver\DataSourceDriverInterface;
 use AgeekDev\MMName\DataSourceDriver\DataSourceManager;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Package;
 use AgeekDev\MMName\Facades\DataSource;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Container\Container;
+use Illuminate\Support\Facades\Config;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class MMNameServiceProvider extends PackageServiceProvider
 {

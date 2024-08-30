@@ -3,8 +3,8 @@
 namespace AgeekDev\MMName\DataSourceDriver;
 
 use AgeekDev\MMName\DTO\DataSourceDTO;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
 
 class JsonDriver extends DataSourceDriver
 {
