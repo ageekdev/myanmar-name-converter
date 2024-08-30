@@ -2,9 +2,10 @@
 
 namespace AgeekDev\MMName;
 
+use AgeekDev\MMName\DataSourceDriver\DataSourceDriverInterface;
+use AgeekDev\MMName\Facades\DataSource;
 use AgeekDev\MMName\Traits\EnglishSarHelpers;
 use AgeekDev\MMName\Traits\MyanmarSarHelpers;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Traits\Macroable;
 
 class MMName
@@ -13,14 +14,13 @@ class MMName
         MyanmarSarHelpers,
         Macroable;
 
-    protected array $dataSource;
+    protected DataSourceDriverInterface $dataSource;
 
     public function __construct()
     {
-        $this->dataSource = [
-            'en' => Config::get('en-names-map'),
-            'mm' => Config::get('mm-names-map'),
-        ];
+        $this->dataSource = DataSource::driver(
+            config('mm-name-converter.data_source_driver')
+        )->getDataSource();
     }
 
     public function convertToEn(string $nameString, bool $isUcWords = true): string
@@ -76,13 +76,11 @@ class MMName
 
     protected function transform(string $nameSegment, string $source = 'en'): string
     {
-        if (! in_array($source, ['en', 'mm'])) {
-            throw new \LogicException('Invalid source name provided');
-        }
+        check_source_name($source);
 
         return collect(explode(' ', $nameSegment))
             ->map(function ($name) use ($source) {
-                return $this->dataSource[$source][$name] ?? '';
+                return $this->dataSource->fetchData($source)->get($name) ?? '';
             })
             ->implode(' ');
     }

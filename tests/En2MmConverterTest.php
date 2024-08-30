@@ -4,6 +4,8 @@ use AgeekDev\MMName\Facades\MMName;
 
 it('can convert myan-glish name to myanmar', function () {
 
+    config()->set('mm-name-converter.data_source_driver', 'config');
+
     $result = MMName::convertToMm('A mi Zan');
     expect($result)->toEqual('အေမီစျန်');
 

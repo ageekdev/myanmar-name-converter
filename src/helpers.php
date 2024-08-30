@@ -56,3 +56,12 @@ if (! function_exists('clean_text')) {
         return trim($value);
     }
 }
+
+if (! function_exists('check_source_name')) {
+    function check_source_name(string $source): void
+    {
+        if (! in_array($source, ['en', 'mm'])) {
+            throw new InvalidArgumentException('Invalid source name provided');
+        }
+    }
+}
