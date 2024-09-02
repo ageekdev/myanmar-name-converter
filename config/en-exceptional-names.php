@@ -37,4 +37,13 @@ return [
     'thu zar' => 'thuzar',
     'a pril' => 'april',
     'na di' => 'nadi',
+    'sa lai' => 'salai',
+    'tha ra phi' => 'tharaphi',
+    'tha ya phi' => 'thayaphi',
+    'vic dar' => 'victor',
+    'zu ly' => 'july',
+    'au gat sa tin' => 'augustine',
+    'au gat' => 'august',
+    'di zin ber' => 'december',
+    'a mi' => 'ami',
 ];
