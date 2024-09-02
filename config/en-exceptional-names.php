@@ -36,4 +36,5 @@ return [
     'thein gi' => 'theingi',
     'thu zar' => 'thuzar',
     'a pril' => 'april',
+    'na di' => 'nadi',
 ];
