@@ -4,13 +4,14 @@ namespace AgeekDev\MMName;
 
 use AgeekDev\MMName\Traits\EnglishSarHelpers;
 use AgeekDev\MMName\Traits\MyanmarSarHelpers;
-use AgeekDev\MMName\Utilities\Normalizer;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Traits\Macroable;
 
-class MMName extends Normalizer
+class MMName
 {
-    use EnglishSarHelpers, Macroable, MyanmarSarHelpers;
+    use EnglishSarHelpers,
+        Macroable,
+        MyanmarSarHelpers;
 
     protected array $dataSource;
 
@@ -24,22 +25,25 @@ class MMName extends Normalizer
 
     public function convertToEn(string $nameString, bool $isUcWords = true): string
     {
-        if (! $this->isMmName(clean_text($nameString))) {
+        $nameString = clean_text($nameString);
+
+        if (! $this->isMmName($nameString)) {
             return $this->normalizeMmText($nameString);
         }
 
-        $enName = '';
-        $nameSegments = $this->myanmarSarSegment($this->normalizeMmText(clean_text($nameString)));
+        $nameSegments = $this->splitMyanmarSarSegments(
+            $this->normalizeMmText($nameString)
+        );
 
-        foreach (explode(' ', $nameSegments) as $name) {
-            $enName .= ($this->dataSource['mm'][$name] ?? '').' ';
-        }
+        $enName = $this->transform($nameSegments, 'mm');
 
-        if (! $isUcWords) {
-            return trim($this->exceptionalNamesReplace(strtolower($enName)));
-        }
+        $result = trim(
+            $this->replaceEnExceptionalWords(
+                strtolower($enName)
+            )
+        );
 
-        return ucwords(trim($this->exceptionalNamesReplace(strtolower($enName))));
+        return $isUcWords ? ucwords($result) : $result;
     }
 
     public function convertToMm(string $nameString): string
@@ -48,35 +52,38 @@ class MMName extends Normalizer
             return $nameString;
         }
 
-        $mmName = '';
-        $enName = $this->exceptionalNamesReplace(strtolower($nameString));
+        $nameSegments = $this->replaceEnExceptionalWords(
+            strtolower($nameString)
+        );
 
-        foreach (explode(' ', $enName) as $name) {
-            $mmName .= ($this->dataSource['en'][$name] ?? '').' ';
-        }
+        $mmName = $this->transform($nameSegments, 'en');
 
         return clean_text($mmName);
     }
 
-    public function isMmName(string $name): bool
-    {
-        return preg_match('/^[\x{1000}-\x{103F}\x{104A}-\x{109F}|\x{0020}]+$/u', $name);
-    }
-
-    public function isEnName(string $name): bool
-    {
-        return preg_match('/^[A-Za-z|\x{0020}]+$/', $name);
-    }
-
     public function compare(string $firstName, string $secondName): bool
     {
-        $firstName = $this->isMmName($firstName) ? $this->convertToMm($this->convertToEn($firstName)) : $this->convertToMm($firstName);
-        $secondName = $this->isMmName($secondName) ? $this->convertToMm($this->convertToEn($secondName)) : $this->convertToMm($secondName);
+        $normalize = function ($name) {
+            return trim_whitespaces(
+                $this->isMmName($name)
+                    ? $this->convertToMm($this->convertToEn($name))
+                    : $this->convertToMm($name)
+            );
+        };
 
-        if (trim_whitespaces($firstName) === trim_whitespaces($secondName)) {
-            return true;
+        return $normalize($firstName) === $normalize($secondName);
+    }
+
+    protected function transform(string $nameSegment, string $source = 'en'): string
+    {
+        if (! in_array($source, ['en', 'mm'])) {
+            throw new \LogicException('Invalid source name provided');
         }
 
-        return false;
+        return collect(explode(' ', $nameSegment))
+            ->map(function ($name) use ($source) {
+                return $this->dataSource[$source][$name] ?? '';
+            })
+            ->implode(' ');
     }
 }
