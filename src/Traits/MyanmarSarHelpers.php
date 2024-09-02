@@ -48,4 +48,19 @@ trait MyanmarSarHelpers
                 return preg_replace($pattern, $replace, $text);
             }, $text);
     }
+
+    public function convertToMm(string $nameString): string
+    {
+        if (! $this->isEnName($nameString)) {
+            return $nameString;
+        }
+
+        $nameSegments = $this->replaceEnExceptionalWords(
+            strtolower($nameString)
+        );
+
+        $mmName = $this->transform($nameSegments, 'en');
+
+        return clean_text($mmName);
+    }
 }
